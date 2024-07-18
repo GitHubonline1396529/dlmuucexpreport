@@ -1,0 +1,25 @@
+\section{实验步骤与结果}
+
+\subsection{编译文档}
+
+\subsubsection{使用make命令编译文档}
+
+如果您习惯使用\texttt{make}命令，并且您的计算机上已经正确配置了GNU Make（譬如基于mingw环境，或者您在大一学习C语言的时候安装过GCC组件作为您的C语言编译器，或者您安装过Git for Windows），那么文档的编译规则已经在Makefile中正确定义。使用\texttt{make}命令能够即刻生成您的文档。
+
+\subsubsection{使用\XeLaTeX 编译文档}
+
+文档需按照如下顺序编译：
+
+XeLaTeX → Biber → XeLaTeX → XeLaTeX
+
+通过在命令行执行如代码\ref{lst:shell_script}所示的命令，你可以正确编译文档：
+
+\begin{lstlisting}[
+    language=bash,
+    caption={用于编译文档的shell命令}\label{lst:shell_script}]
+xelatex main.tex
+biber main # 编译引用格式
+xelatex main.tex
+xelatex main.tex
+latexmk -c # 清理工作区
+\end{lstlisting}

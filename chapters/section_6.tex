@@ -1,0 +1,37 @@
+\section{参考文献}
+
+参考文献按序号、作者、文章题目、期刊名、年份列出；书按序号、作者姓名、书名、出版社、出版时间顺序列出。
+
+\printbibliography[heading=none]
+
+\newpage
+
+\section{附录}
+
+\subsection{宏包}
+
+模板中已加载的宏包如表\ref{tab:packs}所示。请勿重复加载以防止出现问题。
+
+\begin{table}[!h]
+    \centering
+    \caption{已加载的宏包}\label{tab:packs}
+    \begin{tabular}{ccccc}
+        \toprule
+        ctex & titlesec & array & geometry & fontspec \\
+        float & amsmath & amssymb & hyperref & amsthm \\
+        mathtools & mathrsfs & calc & tocloft & titletoc \\
+        fancyhdr & enumerate & enumitem & metalogo & setspace \\
+        caption & subcaption & booktabs & multirow & longtable \\
+        chemfig & tikz & tikz-network & circuitikz & color \\
+        xcolor & verbatim & listings & matlab-prettifier &  \\
+        \bottomrule
+        \end{tabular}
+\end{table}
+
+\subsection{插入代码块效果示例}
+
+\lstinputlisting[
+    language=Python, 
+    caption={系统聚类方法的实现（Python）：\label{lst:demo}} 
+    ]{code/demo.py} % Python
+
