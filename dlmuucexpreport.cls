@@ -162,15 +162,16 @@ linkcolor=black
 
 \newcommand\dateOnCover[1]{\def\@dateOnCover{#1}}
 
-% 页眉页脚设置
+% 设置页眉和页脚
 \pagestyle{fancy}
-% \fancyhf{} % 清空当前页眉页脚设置
-\fancyfoot[C]{\thepage} % 设置页脚居中显示页码
+\fancyhead{} % 仅清空页眉
+\renewcommand{\headrulewidth}{0pt} % 去掉页眉的横线
 
 % 封面
 \newcommand{\makecover}{
+\begin{titlepage}
 
-\pagestyle{empty}
+% \pagestyle{empty}
 
 \vspace*{21pt} % 五号字空行两行
 
@@ -215,6 +216,7 @@ linkcolor=black
         \fontsize{22pt}{22pt}{\kaitigb\bfseries \@date\par}}
 \end{center}
 \newpage
+\end{titlepage}
 }
 
 % 设置目录标题样式
