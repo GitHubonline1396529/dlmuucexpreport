@@ -41,7 +41,7 @@
 
 模板使用\texttt{biblatex}管理参考文献格式。在引用文献之前，需要首先在\texttt{*.bib}文件中定义参考文献条目，随后使用\texttt{\textbackslash autocite\{key\}}命令插入引用。如下代码框\ref{lst:bib}展示了一个引用文献的BIB条目：
 
-\begin{lstlisting}[caption={BIB引文格式条目示例}\label{lst:bib}]
+\begin{lstlisting}[caption={BIB引文格式条目示例\label{lst:bib}}]
 @article{demo,
   author = {袁庆龙 and 候文义},
   journal = {太原理工大学学报},
@@ -66,7 +66,7 @@
 
 \begin{lstlisting}[
   language=tex, 
-  caption={式(\ref{equ:assumption})对应的\TeX 源码}\label{lst:tex_source_code}]
+  caption={式(\ref{equ:assumption})对应的\TeX 源码\label{lst:tex_source_code}}]
 \prefacedEqu{假定}{\label{equ:assumption} X \sim N(\mu, \sigma)}
 \end{lstlisting}
 
@@ -229,7 +229,7 @@
 
 通过在\TeX 中嵌入代码的形式插入代码块的示例如\ref{lst:insert}所示。
 
-\begin{lstlisting}[language=C, caption={在\TeX 中嵌入代码的形式插入代码块}\label{lst:insert}]
+\begin{lstlisting}[language=C, caption={在\TeX 中嵌入代码的形式插入代码块\label{lst:insert}}]
 #include <stdio.h>
 int main( void ) {
   print("hello, world\n");
