@@ -150,14 +150,17 @@ linkcolor=black
 \titlespacing{\subsubsection}{0pt}{0.5\baselineskip}{0.5\baselineskip}
 
 % 文档的信息
+\newcommand\college[1]{\def\@college{#1}}
+\newcommand\titleOnCover[1]{\def\@titleOnCover{#1}}
+
+\newcommand\course[1]{\def\@course{#1}}
 \newcommand\major[1]{\def\@major{#1}}
-\newcommand\name[1]{\def\@name{#1}}
 \newcommand\class[1]{\def\@class{#1}}
 \newcommand\stuid[1]{\def\@stuid{#1}}
-\newcommand\college[1]{\def\@college{#1}}
-\newcommand\dateOnCover[1]{\def\@date{#1}}
+\newcommand\name[1]{\def\@name{#1}}
 \newcommand\teacher[1]{\def\@teacher{#1}}
-\newcommand\course[1]{\def\@course{#1}}
+
+\newcommand\dateOnCover[1]{\def\@dateOnCover{#1}}
 
 % 页眉页脚设置
 \pagestyle{fancy}
@@ -172,11 +175,11 @@ linkcolor=black
 \vspace*{21pt} % 五号字空行两行
 
 \begin{center}
-    {\fontsize{42pt}{42pt}\huawenxingkai 大连海事大学\\[0em]}
+    {\fontsize{42pt}{42pt}\huawenxingkai \@college\\[0em]}
 
     \vspace{1.5\baselineskip} % 微调行距
 
-    {\fontsize{26pt}{26pt}\heiti 实验报告\\[0em]}
+    {\fontsize{26pt}{26pt}\heiti \@titleOnCover\\[0em]}
 
     \vspace{2\baselineskip} % 空两行
 
@@ -216,7 +219,8 @@ linkcolor=black
 
 % 设置目录标题样式
 %
-% 目录标题：三号宋体，加粗，居中，段前20磅，段后10磅，无缩进，“目”和“录”之间空4格；
+% 目录标题：三号宋体，加粗，居中，段前20磅，段后10磅，无缩进，
+% “目”和“录”之间空4格；
 \renewcommand{\contentsname}{\hfill\textbf{
     \fontsize{16pt}{16pt}目\ \ \ \ 录}\hfill}
 
