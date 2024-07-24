@@ -88,8 +88,8 @@
 \RequireXeTeX
 \ifxetex\else
 \ClassError{dlmuucexprepthesis}{
-    You must use the `xelatex' driver\MessageBreak Please choose `xelatex'}{%
-    Just choose `xelatex', no `pdflatex' or `latex' and so on.}
+    You must use the 'xelatex' driver\MessageBreak Please choose 'xelatex'}{%
+    Just choose 'xelatex', no 'pdflatex' or 'latex' and so on.}
 \fi
 
 % 如果需要使用 .csl 样式文件，可以添加如下命令：
