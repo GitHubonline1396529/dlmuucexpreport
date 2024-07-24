@@ -206,10 +206,20 @@
 
 \begin{figure}[!h]
   \centering
-  \subcaptionbox{粗粉涂层\label{fig:a}}[0.4\linewidth]{
-    \includegraphics{figure/subfig1.jpg}}
-  \subcaptionbox{细粉涂层\label{fig:b}}[0.4\linewidth]{
-    \includegraphics{figure/subfig2.jpg}}
+  \begin{minipage}{0.4\linewidth}
+    \centering
+    \includegraphics[
+      height=0.2\textheight
+      ]{figure/subfig1.jpg}
+      \subcaption{粗粉涂层}\label{fig:a}
+  \end{minipage}
+  \begin{minipage}{0.4\linewidth}
+    \centering
+    \includegraphics[
+      height=0.2\textheight
+      ]{figure/subfig2.jpg}
+      \subcaption{细粉涂层}\label{fig:b}
+  \end{minipage}
   \caption{涂层在冷却过程中残余热应力的变化情况}
   \label{fig:figures}
 \end{figure}
