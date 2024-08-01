@@ -1,12 +1,17 @@
-\section{实验步骤与结果}
+\chapter{实验步骤与结果}
 
-\subsection{编译文档}
+\section{编译文档}
 
-\subsubsection{使用make命令编译文档}
+\subsection{使用make命令编译文档}
 
 如果您习惯使用\texttt{make}命令，并且您的计算机上已经正确配置了GNU Make（譬如基于mingw环境，或者您在大一学习C语言的时候安装过GCC组件作为您的C语言编译器，或者您安装过Git for Windows），那么文档的编译规则已经在Makefile中正确定义。使用\texttt{make}命令能够即刻生成您的文档。
 
-\subsubsection{使用\XeLaTeX 编译文档}
+\begin{itemize}
+    \item 如果您需要删除工作区目录下包含成品文档在内的所有生成文件，请使用\texttt{make clean}
+    \item 如果您只是需要删除所有的辅助文件，请使用\texttt{make clear}
+\end{itemize}
+
+\subsection{使用\XeLaTeX 编译文档}
 
 文档需按照如下顺序编译：
 
