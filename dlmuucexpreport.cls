@@ -1,12 +1,20 @@
 \ProvidesClass{dlmuucexpreport}[
     2024/10/07 A Unoffical document class for Dalian Maritime University students to make experiment reports]
-\LoadClass[12pt,numberwithinsect,AutoFakeBold=true]{ctexart}
+\LoadClass[12pt,numberwithinsect,AutoFakeBold=true, openany]{ctexbook}
 
 % 导入 CTEX 宏包来支持中文文本 
-\RequirePackage[number=arabic]{ctex}
+\RequirePackage[
+    number=arabic, % 不必强制在偶数页开始新的 Chapter
+    ]{ctex}
 
-% 导入其他需要的 TeX 包
+% \let\cleardoublepage\clearpage
+
+% 用于设置目录样式的包
 \RequirePackage{titlesec}
+\RequirePackage[titles, subfigure]{tocloft}
+\RequirePackage{titletoc}
+
+% 其他常见的 TeX 包
 \RequirePackage{array}
 \RequirePackage{geometry}
 \RequirePackage{fontspec}
@@ -24,10 +32,6 @@
 \RequirePackage{mathtools} 
 \RequirePackage{mathrsfs}
 \RequirePackage{calc}
-
-% 用于设置目录样式的包
-\RequirePackage[titles, subfigure]{tocloft}
-\RequirePackage{titletoc}
 
 % 其他包
 \RequirePackage{fancyhdr}
@@ -129,25 +133,30 @@ linkcolor=black
 }
 
 % 定义中文序号
+\renewcommand\thechapter{
+    \chinese{chapter}、}
 \renewcommand\thesection{
-    \chinese{section}}
+    \arabic{chapter}.\arabic{section} }
 \renewcommand\thesubsection{
-    \arabic{section}.\arabic{subsection}}
+    \arabic{chapter}.\arabic{section}.\arabic{subsection}}
 \renewcommand\thesubsubsection{
-    \arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+    \arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
 
 % 标题格式设置
+\titleformat{\chapter}{
+    \bfseries\fontsize{14pt}{16pt}\selectfont}{\thechapter}{1em}{}
 \titleformat{\section}{
-    \bfseries\fontsize{14pt}{16pt}\selectfont}{\thesection、}{1em}{}
+    \bfseries\fontsize{12pt}{14pt}\selectfont}{\thesection}{1em}{}
 \titleformat{\subsection}{
-    \bfseries\fontsize{12pt}{14pt}\selectfont}{\thesubsection}{1em}{}
+    \bfseries\fontsize{10.5pt}{12pt}\selectfont}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}{
-    \bfseries\fontsize{10.5pt}{12pt}\selectfont}{\thesubsubsection}{1em}{}
+        \bfseries\fontsize{10.5pt}{12pt}\selectfont}{\thesubsubsection}{1em}{}
 
 % 标题间距设置
-\titlespacing{\section}{0pt}{20pt}{10pt}
+\titlespacing{\chapter}{0pt}{20pt}{10pt}
+\titlespacing{\section}{0pt}{0.5\baselineskip}{0.5\baselineskip}
 \titlespacing{\subsection}{0pt}{0.5\baselineskip}{0.5\baselineskip}
-\titlespacing{\subsubsection}{0pt}{0.5\baselineskip}{0.5\baselineskip}
+\titlespacing{\subsubsection}{0pt}{0}{0}
 
 % 文档的信息
 \newcommand\college[1]{\def\@college{#1}}
@@ -226,30 +235,39 @@ linkcolor=black
 \renewcommand{\contentsname}{\hfill\textbf{
     \fontsize{16pt}{16pt}目\ \ \ \ 录}\hfill}
 
+% 设置目录标题样式
+%
+% 目录标题：三号宋体，加粗，居中，段前20磅，段后10磅，无缩进，
+% “目”和“录”之间空4格；
+\renewcommand{\contentsname}{\hfill\textbf{
+    \fontsize{16pt}{16pt}目\ \ \ \ 录}\hfill}
+
 % 设置目录项样式
 %
 % 各章题序及其余：小4号宋体；自动生成，段前段后0磅；
 % 一级标题空2个字符（空4格），
 % 二级标题空4个字符（空8格），
 % 三级标题空6个字符（空12格）。
-\renewcommand{\cftsecfont}{\fontsize{12pt}{12pt}} % 章节标题字体
-\renewcommand{\cftsubsecfont}{\fontsize{12pt}{12pt}} % 小节标题字体
-\renewcommand{\cftsubsubsecfont}{\fontsize{12pt}{12pt}} % 子小节标题字体
+\renewcommand{\cftchapfont}{\fontsize{12pt}{12pt}} % 章节标题字体
+\renewcommand{\cftsecfont}{\fontsize{12pt}{12pt}} % 小节标题字体
+\renewcommand{\cftsubsecfont}{\fontsize{12pt}{12pt}} % 子小节标题字体
 
 % 设置目录项格式
-\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}} % 章节之间的点线
-\renewcommand{\cftsecpagefont}{\hfill\textperiodcentered} % 章节页码格式
-\renewcommand{\cftsubsecpagefont}{\hfill\textperiodcentered} % 小节页码格式
-\renewcommand{\cftsubsubsecpagefont}{\hfill\textperiodcentered} % 子小节页码格式
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % 章节之间的点线
+\renewcommand{\cftsecpagefont}{\hfill\textperiodcentered} % 小节页码格式
+\renewcommand{\cftsubsecpagefont}{\hfill\textperiodcentered} % 子小节页码格式
 
 % 设置目录项缩进和间距
-\setlength{\cftbeforesecskip}{0pt} % 章节前的段距
-\setlength{\cftbeforesubsecskip}{0pt} % 小节前的段距
-\setlength{\cftbeforesubsubsecskip}{0pt} % 子小节前的段距
+\setlength{\cftbeforechapskip}{0pt} % 章节前的段距
+\setlength{\cftbeforesecskip}{0pt} % 小节前的段距
+\setlength{\cftbeforesubsecskip}{0pt} % 子小节前的段距
 
-\setlength{\cftsecindent}{2em} % 章节标题缩进
-\setlength{\cftsubsecindent}{4em} % 小节标题缩进
-\setlength{\cftsubsubsecindent}{6em} % 子小节标题缩进
+\setlength{\cftchapindent}{2em} % 章节标题缩进
+\setlength{\cftsecindent}{4em} % 小节标题缩进
+\setlength{\cftsubsecindent}{6em} % 子小节标题缩进
+
+% 隐藏子小节
+\setcounter{tocdepth}{3} % 只显示到 subsection，subsubsection 不显示
 
 % 设置全局图表格式
 % 图表按章节编号
@@ -329,25 +347,14 @@ linkcolor=black
             \tablename\thetable{} \continuedcaption}
 }
 
-% 定义命令 conclusion 为结论内容样式
-\newcommand{\conclusion}[1]{%
-  {\setlength{\parindent}{0pt} % 段落缩进为0
-   \setlength{\parskip}{0pt} % 段前段后间距为0
-   \setstretch{1.25} % 行距为1.25倍
-   % 小四号字体，行距设置为1.25倍行距
-   \fontsize{14pt}{1.25\baselineskip}\selectfont \textbf{结论}\\
-   \fontsize{12pt}{1.25\baselineskip}\selectfont#1 % 结论内容
-   \par % 段落结束
-  }%
-}
-
 % 代码环境定制
 % 定义颜色
 \definecolor{commentgreen}{HTML}{3CA53C}
 % 设置代码环境
 \lstset{
     basicstyle=\small\ttfamily, % 整体的字号、字体
-    backgroundcolor=\color{gray!10}, % 背景颜色
+    % backgroundcolor=\color{gray!10}, % 背景颜色
+    backgroundcolor=\color{white}, % 背景颜色
     frame=trbl, %显示各方向的代码框线条
     frameround=tttt, % 设置代码框各棱角的形状
     showstringspaces=false, % 取消特别的字符间距
@@ -385,4 +392,11 @@ linkcolor=black
     \begin{equation}
         #3
     \end{equation}
+}
+
+\newcommand{\conclusion}{
+    \vspace{20pt} % 段前20磅
+    \noindent % 无缩进
+    {\fontsize{14pt}{17.5pt}\selectfont\textbf{结论}} % 四号宋体，加粗，1.25倍行距
+    \vspace{10pt} % 段后10磅
 }
