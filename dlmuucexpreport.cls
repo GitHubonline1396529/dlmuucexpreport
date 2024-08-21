@@ -150,7 +150,7 @@ linkcolor=black
 \titleformat{\subsection}{
     \bfseries\fontsize{10.5pt}{12pt}\selectfont}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}{
-        \bfseries\fontsize{10.5pt}{12pt}\selectfont}{\thesubsubsection}{1em}{}
+    \bfseries\fontsize{10.5pt}{12pt}\selectfont}{\thesubsubsection}{1em}{}
 
 % 标题间距设置
 \titlespacing{\chapter}{0pt}{20pt}{10pt}
