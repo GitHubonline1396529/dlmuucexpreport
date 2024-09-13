@@ -1,5 +1,7 @@
 \ProvidesClass{dlmuucexpreport}[
-    2024/10/07 A Unoffical document class for Dalian Maritime University students to make experiment reports]
+    2024/10/07 A Unoffical document class 
+    for Dalian Maritime University undergraduate students 
+    to make their course  experiment reports]
 \LoadClass[12pt,numberwithinsect,AutoFakeBold=true, openany]{ctexbook}
 
 % 导入 CTEX 宏包来支持中文文本 
@@ -19,6 +21,7 @@
 \RequirePackage{geometry}
 \RequirePackage{fontspec}
 \RequirePackage{float}
+\RequirePackage{ulem}
 
 % 与数学环境有关的包
 \RequirePackage{amsmath}
@@ -176,6 +179,9 @@ linkcolor=black
 \fancyhead{} % 仅清空页眉
 \renewcommand{\headrulewidth}{0pt} % 去掉页眉的横线
 
+% 出于封面样式的需要，将 ulem 的下划线设置为 1pt
+\renewcommand{\ULthickness}{1pt} % 设置下划线厚度为 1pt
+
 % 封面
 \newcommand{\makecover}{
 \begin{titlepage}
@@ -198,22 +204,31 @@ linkcolor=black
 
 \vspace*{34.7pt} % 一号字空一行
 
-\begin{table}[h]
-    \setlength{\tabcolsep}{0pt} % 在表格内局部设置列距为0
+% 封面上的姓名课程等信息框
+\begin{table}[H]
+    \setlength{\tabcolsep}{0pt} % 设置列距为0
     \setlength{\arrayrulewidth}{1pt} % 设置表格线条宽度
-    \renewcommand{\arraystretch}{2} % Default value: 1
-    \centering\fontsize{20pt}{20pt}\kaitigb
-        \begin{tabular}{b{2.8875cm} b{9cm}<{\centering}}
-            % 参考：
-            % https://blog.csdn.net/qq_44901346/article/details/120611923
-            % \fontsize{20pt}{20pt}
-            \textbf{\bfseries 课程名称} &  \textbf{\bfseries \@course} \\ \cline{2-2}
-            \textbf{\bfseries 专\qquad 业} & \textbf{\bfseries \@major}  \\ \cline{2-2}
-            \textbf{\bfseries 班\qquad 级}& \textbf{\bfseries \@class}\\ \cline{2-2}
-            \textbf{\bfseries 学\qquad 号}& \textbf{\bfseries \@stuid}\\ \cline{2-2}
-            \textbf{\bfseries 姓\qquad 名}  & \textbf{\bfseries \@name} \\ \cline{2-2}
-            \textbf{\bfseries 指导教师} &  \textbf{\bfseries \@teacher} \\ \cline{2-2}
-        \end{tabular}
+    \renewcommand{\arraystretch}{2} % 设置行距
+    \centering
+    \fontsize{20pt}{20pt}\kaitigb
+    \begin{tabular}{b{2.8875cm} b{9cm}<{\centering}}
+        % 这里有几个要点：
+        %     1. 使用 ulem 宏包的 `\uline` 命令可以很好地设置下划线
+        %     2. 使用 `\parbox` 设置强制居中
+        %     3. 使用 `\raisebox` 将字体与下划线之间的距离抬高一点
+        \textbf{\bfseries 课程名称} & 
+        \uline{\raisebox{0.5ex}{\parbox[c][\baselineskip][c]{9cm}{\centering\textbf{\bfseries \@course}}}} \\
+        \textbf{\bfseries 专\qquad 业} & 
+        \uline{\raisebox{0.5ex}{\parbox[c][\baselineskip][c]{9cm}{\centering\textbf{\bfseries \@major}}}} \\
+        \textbf{\bfseries 班\qquad 级} & 
+        \uline{\raisebox{0.5ex}{\parbox[c][\baselineskip][c]{9cm}{\centering\textbf{\bfseries \@class}}}} \\
+        \textbf{\bfseries 学\qquad 号} & 
+        \uline{\raisebox{0.5ex}{\parbox[c][\baselineskip][c]{9cm}{\centering\textbf{\bfseries \@stuid}}}} \\
+        \textbf{\bfseries 姓\qquad 名} & 
+        \uline{\raisebox{0.5ex}{\parbox[c][\baselineskip][c]{9cm}{\centering\textbf{\bfseries \@name}}}} \\
+        \textbf{\bfseries 指导教师} & 
+        \uline{\raisebox{0.5ex}{\parbox[c][\baselineskip][c]{9cm}{\centering\textbf{\bfseries \@teacher}}}} \\
+    \end{tabular}
 \end{table}
 
 
