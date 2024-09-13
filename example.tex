@@ -1,0 +1,34 @@
+\documentclass[12pt]{dlmuucexpreport}
+
+\addbibresource{references.bib}  % 指定参考文献文件名
+
+\begin{document}
+
+% 设置元数据
+% 这部分内容将会被用于构建文档的封面
+\college{大连海事大学}
+\titleOnCover{实验报告}
+
+\course{某某专业实验课}
+\major{某某专业}
+\class{20XX-X班}
+\stuid{2220XXXXXX}
+\name{你的名字}
+\teacher{你的老师}
+\dateOnCover{XXXX年XX月XX日}
+
+% 启用封面
+\makecover
+\tableofcontents % 插入目录
+% 设置页眉页脚
+\pagenumbering{arabic} % 从目录页开始阿拉伯数字页码
+
+% 导入各个章节
+\input{chapters/chapter_1.tex} \vspace{0pt}
+\input{chapters/chapter_2.tex} \vspace{0pt}
+\input{chapters/chapter_3.tex} \vspace{0pt}
+\input{chapters/chapter_4.tex} \vspace{0pt}
+\input{chapters/chapter_5.tex} \vspace{0pt}
+\input{chapters/chapter_6.tex} \vspace{0pt}
+
+\end{document}
