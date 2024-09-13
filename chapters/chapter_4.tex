@@ -34,3 +34,13 @@ xelatex main.tex
 xelatex main.tex
 latexmk -c # 清理工作区
 \end{lstlisting}
+
+\subsection{使用LaTexmk基于\XeLaTeX 构建文档}
+
+您也可以通过LaTexmk指定使用\XeLaTeX 规则编译文档，这只需要您在使用LaTexmk时指定\texttt{-xelatex}参数：
+
+\begin{lstlisting}[
+    language=bash,
+    caption={用于编译文档的LaTexmk命令}\label{lst:shell_script}]
+latexmk -xelatex main.tex
+\end{lstlisting}
