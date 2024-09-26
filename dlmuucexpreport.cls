@@ -123,7 +123,7 @@
 
 % 正文格式设置
 \setlength{\parindent}{2em}
-\setstretch{1.25}
+\setstretch{1.25} % 多倍行距值 1.25
 \setlength{\parskip}{0pt plus 1pt}
 % 设置 itemize 和 enumerate 的每一项间距等于行距
 \setlist[itemize]{itemsep=-3pt}
@@ -134,6 +134,8 @@
 colorlinks=true,
 linkcolor=black
 }
+
+\setcounter{secnumdepth}{3} % 确保为 subsubsection 编号
 
 % 定义中文序号
 \renewcommand\thechapter{
@@ -146,22 +148,23 @@ linkcolor=black
     \arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
 
 % 标题格式设置
-\titleformat{\chapter}{
-    \bfseries\fontsize{14pt}{16pt}\selectfont}{\thechapter}{1em}{}
-\titleformat{\section}{
-    \bfseries\fontsize{12pt}{14pt}\selectfont}{\thesection}{1em}{}
-\titleformat{\subsection}{
-    \bfseries\fontsize{10.5pt}{12pt}\selectfont}{\thesubsection}{1em}{}
-\titleformat{\subsubsection}{
-    \bfseries\fontsize{10.5pt}{12pt}\selectfont}{\thesubsubsection}{1em}{}
+\titleformat{\chapter}
+{\bfseries\fontsize{14pt}{16pt}\selectfont}{\thechapter}{1em}{}
+\titleformat{\section}
+{\bfseries\fontsize{12pt}{14pt}\selectfont}{\thesection}{1em}{}
+\titleformat{\subsection}
+{\bfseries\fontsize{10.5pt}{12pt}\selectfont}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}[runin] % 加上 [runin] 参数将 subsubsection 调整为常见的款项样式
+{\bfseries\fontsize{10.5pt}{12pt}\selectfont}{\thesubsubsection}{1em}{}
 
 % 标题间距设置
 \titlespacing{\chapter}{0pt}{20pt}{10pt}
 \titlespacing{\section}{0pt}{0.5\baselineskip}{0.5\baselineskip}
 \titlespacing{\subsection}{0pt}{0.5\baselineskip}{0.5\baselineskip}
-\titlespacing{\subsubsection}{0pt}{0}{0}
+\titlespacing{\subsubsection}{0pt}{0.5\baselineskip}{0.5\baselineskip}
 
 % 文档的信息
+% 用于在封面上展示
 \newcommand\college[1]{\def\@college{#1}}
 \newcommand\titleOnCover[1]{\def\@titleOnCover{#1}}
 
@@ -206,10 +209,11 @@ linkcolor=black
 
 % 封面上的姓名课程等信息框
 \begin{table}[H]
+    \centering
     \setlength{\tabcolsep}{0pt} % 设置列距为0
     \setlength{\arrayrulewidth}{1pt} % 设置表格线条宽度
     \renewcommand{\arraystretch}{2} % 设置行距
-    \centering
+    % \centering
     \fontsize{20pt}{20pt}\kaitigb
     \begin{tabular}{b{2.8875cm} b{9cm}<{\centering}}
         % 这里有几个要点：
@@ -230,7 +234,6 @@ linkcolor=black
         \uline{\raisebox{0.5ex}{\parbox[c][\baselineskip][c]{9cm}{\centering\textbf{\bfseries \@teacher}}}} \\
     \end{tabular}
 \end{table}
-
 
 % 小四字体空一行
 \vspace*{12pt}
@@ -263,6 +266,11 @@ linkcolor=black
 % 一级标题空2个字符（空4格），
 % 二级标题空4个字符（空8格），
 % 三级标题空6个字符（空12格）。
+
+% 隐藏子小节
+% 设置目录深度显示三级
+\setcounter{tocdepth}{2} % 只显示到 subsection，subsubsection 不显示
+
 \renewcommand{\cftchapfont}{\fontsize{12pt}{12pt}} % 章节标题字体
 \renewcommand{\cftsecfont}{\fontsize{12pt}{12pt}} % 小节标题字体
 \renewcommand{\cftsubsecfont}{\fontsize{12pt}{12pt}} % 子小节标题字体
@@ -281,10 +289,8 @@ linkcolor=black
 \setlength{\cftsecindent}{4em} % 小节标题缩进
 \setlength{\cftsubsecindent}{6em} % 子小节标题缩进
 
-% 隐藏子小节
-\setcounter{tocdepth}{3} % 只显示到 subsection，subsubsection 不显示
-
 % 设置全局图表格式
+
 % 图表按章节编号
 \numberwithin{table}{section} 
 \numberwithin{figure}{section}
@@ -316,7 +322,21 @@ linkcolor=black
 
 % 全局调整表格字号
 \AtBeginEnvironment{table}{\fontsize{10.5pt}{12.6pt}\selectfont}
-% \AtBeginEnvironment{array}{\fontsize{10.5pt}{12.6pt}\selectfont}
+% \AtBeginEnvironment{longtable}{\fontsize{9pt}{10.5pt}\selectfont}
+
+% 定义小五号表格环境
+\newenvironment{xiaowutab}
+  {\begingroup\fontsize{9pt}{11pt}\selectfont\begin{tabular}}
+  {\end{tabular}\endgroup}
+
+% 定义五号表格环境
+\newenvironment{wuhaotab}
+  {\begingroup\fontsize{10.5pt}{12pt}\selectfont\begin{tabular}}
+  {\end{tabular}\endgroup}
+
+% 设置全局表格行列距
+\renewcommand{\arraystretch}{1.25} % 设置表格行距为1.25倍
+\setlength{\tabcolsep}{5pt} % 设置列间距
 
 % 插表之前文中必须有相关文字提示，如“见表1.1”、“如表1.1所示”。
 % 一般情况下插表不能拆开两页编排，如某表在一页内安排不下时，才可转页，
@@ -351,7 +371,7 @@ linkcolor=black
 \newcommand{\mycaption}{}
 
 % 定义命令来追加 (续表) 字样
-\newcommand{\continuedcaption}{\mycaption（续表）}
+\newcommand{\continuedcaption}{（续表）}
 
 % 定义命令 continuetablephrase，用于在跨页长表中插入符合格式的“续表”字样
 \newcommand{\continuetablephrase}{
@@ -361,6 +381,16 @@ linkcolor=black
             \bfseries\fontsize{10.5pt}{10.5pt} 
             \tablename\thetable{} \continuedcaption}
 }
+
+% 定义五号长表格环境
+\newenvironment{wuhaolongtab}
+  {\begingroup\fontsize{10.5pt}{12pt}\selectfont\begin{longtable}}
+  {\end{longtable}\endgroup}
+
+% 定义小五长表格环境
+\newenvironment{xiaowulongtab}
+  {\begingroup\fontsize{9pt}{11pt}\selectfont\begin{longtable}}
+  {\end{longtable}\endgroup}
 
 % 代码环境定制
 % 定义颜色
