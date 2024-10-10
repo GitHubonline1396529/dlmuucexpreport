@@ -5,3 +5,6 @@
 *.out 
 *.run.xml 
 *.toc
+
+.vscode
+.vscode/*

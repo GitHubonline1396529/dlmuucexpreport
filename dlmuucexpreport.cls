@@ -124,7 +124,7 @@
 % 正文格式设置
 \setlength{\parindent}{2em}
 \setstretch{1.25} % 多倍行距值 1.25
-\setlength{\parskip}{0pt plus 1pt}
+% \setlength{\parskip}{0pt plus 1pt}
 % 设置 itemize 和 enumerate 的每一项间距等于行距
 \setlist[itemize]{itemsep=-3pt}
 \setlist[enumerate]{itemsep=-3pt}
@@ -161,7 +161,7 @@ linkcolor=black
 \titlespacing{\chapter}{0pt}{20pt}{10pt}
 \titlespacing{\section}{0pt}{0.5\baselineskip}{0.5\baselineskip}
 \titlespacing{\subsection}{0pt}{0.5\baselineskip}{0.5\baselineskip}
-\titlespacing{\subsubsection}{0pt}{0.5\baselineskip}{0.5\baselineskip}
+\titlespacing{\subsubsection}{0pt}{0\baselineskip}{0\baselineskip}
 
 % 文档的信息
 % 用于在封面上展示
