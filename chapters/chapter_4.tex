@@ -1,5 +1,18 @@
 \chapter{实验步骤与结果}
 
+\section{文件目录说明}
+
+项目的主文件夹下的各个目录及其说明如下列所示：
+
+\begin{itemize}
+    \item \texttt{figure}文件夹：用于储存报告中的各项图；
+    \item \texttt{chapters}文件夹：分章节保存报告主题内容，\texttt{chapters\_1.tex}到\texttt{chapter\_6.tex}分别是章节1到6的内容。初始状态下为\texttt{example.pdf}文件中的示例文本内容；
+    \item \texttt{code}文件夹用于保存需要插入报告的代码文件。
+    \item \texttt{fonts}用于保存符号报告样式的字体文件。
+    \item \texttt{document}文件夹保存了一份报告排版格式的要求文件。
+    \item \texttt{backup}文件夹保存了一份GB7714-2015标准引用格式的副本文件，以防万一\texttt{biblatex}自动调用引用格式不生效的情况下可以手动调用。
+\end{itemize}
+
 \section{获取模板}
 
 本模板的GitHub开源地址位于\href{https://github.com/GitHubonline1396529/dlmuucexpreport}{GitHubonline1396529/dlmuucexpreport} ，国内镜像地址位于Gitee上的\href{https://gitee.com/BOXonline_1396529/dlmuucexpreport}{BOXonline\_1396529/dlmuucexpreport} 。点击链接访问。您可以在网站下载源码的压缩包，或使用Git拉取。
@@ -15,6 +28,7 @@
 \begin{itemize}
     \item 如果您需要删除工作区目录下包含成品文档在内的所有生成文件，请使用\texttt{make clean}
     \item 如果您只是需要删除所有的辅助文件，请使用\texttt{make clear}
+    \item \texttt{makefile}中定义的\texttt{make example}命令是用于构建您当前看到的这份示例文档的，通常情况下您不会使用到。
 \end{itemize}
 
 \subsection{使用\XeLaTeX 编译文档}
