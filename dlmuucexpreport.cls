@@ -125,9 +125,14 @@
 \setlength{\parindent}{2em}
 \setstretch{1.25} % 多倍行距值 1.25
 % \setlength{\parskip}{0pt plus 1pt}
-% 设置 itemize 和 enumerate 的每一项间距等于行距
-\setlist[itemize]{itemsep=-3pt}
-\setlist[enumerate]{itemsep=-3pt}
+\setlist[itemize]{
+    topsep=0pt, 
+    itemsep=0pt, 
+    parsep=0pt}  % 调整 itemize
+\setlist[enumerate]{
+    topsep=0pt, 
+    itemsep=0pt, 
+    parsep=0pt} % 调整 enumerate
 
 % 设置超链接的颜色
 \hypersetup{
