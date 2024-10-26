@@ -2,12 +2,16 @@
     2024/10/07 A Unoffical document class 
     for Dalian Maritime University undergraduate students 
     to make their course  experiment reports]
-\LoadClass[12pt,numberwithinsect,AutoFakeBold=true, openany]{ctexbook}
+
+\LoadClass[
+    12pt,
+    numberwithinsect,
+    AutoFakeBold=true, 
+    openany
+    ]{book}
 
 % 导入 CTEX 宏包来支持中文文本 
-\RequirePackage[
-    number=arabic, % 不必强制在偶数页开始新的 Chapter
-    ]{ctex}
+\RequirePackage{ctex}
 
 % \let\cleardoublepage\clearpage
 
@@ -18,7 +22,15 @@
 
 % 其他常见的 TeX 包
 \RequirePackage{array}
-\RequirePackage{geometry}
+
+% 设置页面布局
+\RequirePackage[
+    a4paper,
+    left=2cm,
+    right=2cm,
+    top=2cm,
+    bottom=2cm]{geometry}
+
 \RequirePackage{fontspec}
 \RequirePackage{float}
 \RequirePackage{ulem}
@@ -103,9 +115,6 @@
 % \DeclareLanguageMapping{chinese}{chinese-gb7714-2015}
 % 这里使用的是2015年的国标文件 chinese-gb7714-2015.csl
 
-% 设置页面边距
-\geometry{a4paper,left=2cm,right=2cm,top=2cm,bottom=2cm}
-
 % 字体设置
 \setmainfont{Times New Roman}
 
@@ -128,11 +137,14 @@
 \setlist[itemize]{
     topsep=0pt, 
     itemsep=0pt, 
-    parsep=0pt}  % 调整 itemize
+    parsep=0pt
+}
+
 \setlist[enumerate]{
     topsep=0pt, 
     itemsep=0pt, 
-    parsep=0pt} % 调整 enumerate
+    parsep=0pt
+}
 
 % 设置超链接的颜色
 \hypersetup{
@@ -171,7 +183,8 @@ linkcolor=black
 % 文档的信息
 % 用于在封面上展示
 \newcommand\college[1]{\def\@college{#1}}
-\newcommand\titleOnCover[1]{\def\@titleOnCover{#1}}
+
+\renewcommand{\title}[1]{\def\@title{#1}}
 
 \newcommand\course[1]{\def\@course{#1}}
 \newcommand\major[1]{\def\@major{#1}}
@@ -180,7 +193,7 @@ linkcolor=black
 \newcommand\name[1]{\def\@name{#1}}
 \newcommand\teacher[1]{\def\@teacher{#1}}
 
-\newcommand\dateOnCover[1]{\def\@dateOnCover{#1}}
+\renewcommand{\date}[1]{\def\@date{#1}}
 
 % 设置页眉和页脚
 \pagestyle{fancy}
@@ -191,10 +204,9 @@ linkcolor=black
 \renewcommand{\ULthickness}{1pt} % 设置下划线厚度为 1pt
 
 % 封面
-\newcommand{\makecover}{
+\renewcommand{\maketitle}{
 \begin{titlepage}
-
-% \pagestyle{empty}
+\thispagestyle{empty}
 
 \vspace*{21pt} % 五号字空行两行
 
@@ -203,7 +215,7 @@ linkcolor=black
 
     \vspace{1.5\baselineskip} % 微调行距
 
-    {\fontsize{26pt}{26pt}\heiti \@titleOnCover\\[0em]}
+    {\fontsize{26pt}{26pt}\heiti \@title\\[0em]}
 
     \vspace{2\baselineskip} % 空两行
 
@@ -226,17 +238,23 @@ linkcolor=black
         %     2. 使用 `\parbox` 设置强制居中
         %     3. 使用 `\raisebox` 将字体与下划线之间的距离抬高一点
         \textbf{\bfseries 课程名称} & 
-        \uline{\raisebox{0.5ex}{\parbox[c][\baselineskip][c]{9cm}{\centering\textbf{\bfseries \@course}}}} \\
+        \uline{\raisebox{0.5ex}{\parbox[c][\baselineskip][c]{9cm}%
+        {\centering\textbf{\bfseries \@course}}}} \\
         \textbf{\bfseries 专\qquad 业} & 
-        \uline{\raisebox{0.5ex}{\parbox[c][\baselineskip][c]{9cm}{\centering\textbf{\bfseries \@major}}}} \\
+        \uline{\raisebox{0.5ex}{\parbox[c][\baselineskip][c]{9cm}%
+        {\centering\textbf{\bfseries \@major}}}} \\
         \textbf{\bfseries 班\qquad 级} & 
-        \uline{\raisebox{0.5ex}{\parbox[c][\baselineskip][c]{9cm}{\centering\textbf{\bfseries \@class}}}} \\
+        \uline{\raisebox{0.5ex}{\parbox[c][\baselineskip][c]{9cm}%
+        {\centering\textbf{\bfseries \@class}}}} \\
         \textbf{\bfseries 学\qquad 号} & 
-        \uline{\raisebox{0.5ex}{\parbox[c][\baselineskip][c]{9cm}{\centering\textbf{\bfseries \@stuid}}}} \\
+        \uline{\raisebox{0.5ex}{\parbox[c][\baselineskip][c]{9cm}%
+        {\centering\textbf{\bfseries \@stuid}}}} \\
         \textbf{\bfseries 姓\qquad 名} & 
-        \uline{\raisebox{0.5ex}{\parbox[c][\baselineskip][c]{9cm}{\centering\textbf{\bfseries \@name}}}} \\
+        \uline{\raisebox{0.5ex}{\parbox[c][\baselineskip][c]{9cm}%
+        {\centering\textbf{\bfseries \@name}}}} \\
         \textbf{\bfseries 指导教师} & 
-        \uline{\raisebox{0.5ex}{\parbox[c][\baselineskip][c]{9cm}{\centering\textbf{\bfseries \@teacher}}}} \\
+        \uline{\raisebox{0.5ex}{\parbox[c][\baselineskip][c]{9cm}%
+        {\centering\textbf{\bfseries \@teacher}}}} \\
     \end{tabular}
 \end{table}
 
@@ -255,15 +273,18 @@ linkcolor=black
 %
 % 目录标题：三号宋体，加粗，居中，段前20磅，段后10磅，无缩进，
 % “目”和“录”之间空4格；
-\renewcommand{\contentsname}{\hfill\textbf{
-    \fontsize{16pt}{16pt}目\ \ \ \ 录}\hfill}
-
-% 设置目录标题样式
-%
-% 目录标题：三号宋体，加粗，居中，段前20磅，段后10磅，无缩进，
-% “目”和“录”之间空4格；
-\renewcommand{\contentsname}{\hfill\textbf{
-    \fontsize{16pt}{16pt}目\ \ \ \ 录}\hfill}
+\renewcommand{\contentsname}
+{\hfill 目\ \ \ \ 录\hfill}
+\renewcommand{\cfttoctitlefont}
+{\fontsize{16pt}{16pt}\selectfont} % ToC = Table of Contents
+\renewcommand{\cftaftertoctitle}{}
+\renewcommand{\cftloftitlefont}
+{\normalsize} % LoF = List of Figures
+\renewcommand{\cftafterloftitle}{}
+\renewcommand{\cftlottitlefont}
+{\normalsize} % LoT = List of Tables
+\renewcommand{\cftafterlottitle}
+{}
 
 % 设置目录项样式
 %
