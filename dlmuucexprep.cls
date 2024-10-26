@@ -1,4 +1,4 @@
-\ProvidesClass{dlmuucexpreport}[
+\ProvidesClass{dlmuucexprep}[
     2024/10/07 A Unoffical document class 
     for Dalian Maritime University undergraduate students 
     to make their course  experiment reports]
@@ -9,6 +9,15 @@
     AutoFakeBold=true, 
     openany
     ]{book}
+
+% 编译器约束
+\RequirePackage{ifxetex}
+\RequireXeTeX
+\ifxetex\else
+\ClassError{dlmuucexprep}{
+    You must use the 'xelatex' driver\MessageBreak Please choose 'xelatex'}{%
+    Just choose 'xelatex', no 'pdflatex' or 'latex' and so on.}
+\fi
 
 % 导入 CTEX 宏包来支持中文文本 
 \RequirePackage{ctex}
@@ -101,15 +110,6 @@
 %  \____)       \____)
 
 % \addbibresource{references.bib}  % 指定参考文献文件名
-
-% 编译器约束
-\RequirePackage{ifxetex}
-\RequireXeTeX
-\ifxetex\else
-\ClassError{dlmuucexprepthesis}{
-    You must use the 'xelatex' driver\MessageBreak Please choose 'xelatex'}{%
-    Just choose 'xelatex', no 'pdflatex' or 'latex' and so on.}
-\fi
 
 % 如果需要使用 .csl 样式文件，可以添加如下命令：
 % \DeclareLanguageMapping{chinese}{chinese-gb7714-2015}
