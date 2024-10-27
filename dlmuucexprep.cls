@@ -166,19 +166,33 @@ linkcolor=black
 
 % 标题格式设置
 \titleformat{\chapter}
-{\bfseries\fontsize{14pt}{16pt}\selectfont}{\thechapter}{1em}{}
+    {\bfseries\fontsize{14pt}{16pt}\selectfont}
+    {\thechapter}
+    {1em}
+    {}
 \titleformat{\section}
-{\bfseries\fontsize{12pt}{14pt}\selectfont}{\thesection}{1em}{}
+    {\bfseries\fontsize{12pt}{14pt}\selectfont}
+    {\thesection}
+    {1em}
+    {}
 \titleformat{\subsection}
-{\bfseries\fontsize{10.5pt}{12pt}\selectfont}{\thesubsection}{1em}{}
-\titleformat{\subsubsection}[runin] % 加上 [runin] 参数将 subsubsection 调整为常见的款项样式
-{\bfseries\fontsize{10.5pt}{12pt}\selectfont}{\thesubsubsection}{1em}{}
+    {\bfseries\fontsize{10.5pt}{12pt}\selectfont}
+    {\thesubsection}
+    {1em}
+    {}
+\titleformat{\subsubsection}[runin]
+% 加上 [runin] 参数将 subsubsection 调整为常见的款项样式
+    {\bfseries\fontsize{10.5pt}{12pt}\selectfont} %
+    {\thesubsubsection}
+    {1em}
+    {}
+    [\hspace*{1em}] % 在标题后插入 1em 的间距
 
 % 标题间距设置
 \titlespacing{\chapter}{0pt}{20pt}{10pt}
 \titlespacing{\section}{0pt}{0.5\baselineskip}{0.5\baselineskip}
 \titlespacing{\subsection}{0pt}{0.5\baselineskip}{0.5\baselineskip}
-\titlespacing{\subsubsection}{0pt}{0\baselineskip}{0\baselineskip}
+\titlespacing{\subsubsection}{0pt}{0\baselineskip}{0\baselineskip}[1em]
 
 % 设置目录标题样式
 %
