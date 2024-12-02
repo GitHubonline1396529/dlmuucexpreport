@@ -1,3 +1,20 @@
+%% dlmuucexprep.cls
+%% Copyright 2008 Githubonline1396529
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   https://www.latex-project.org/lppl.txt
+% and version 1.3c or later is part of all distributions of LaTeX
+% version 2008 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is Githubonline1396529
+%
+% This work consists of the files dlmuucexprep.cls and logo.png
+
 \ProvidesClass{dlmuucexprep}[
     2024/10/07 A Unoffical document class 
     for Dalian Maritime University undergraduate students 
@@ -77,7 +94,8 @@
     sorting=none, 
     backend=biber,
     hyperref=true,
-    url=false]{biblatex}  % 使用 biblatex 处理引用
+    url=false
+    ]{biblatex}  % 使用 biblatex 处理引用
 
 % 部分与学科高度相关的包
 \RequirePackage{braket} % 量子力学算符
@@ -160,9 +178,9 @@ linkcolor=black
 \renewcommand\thesection{
     \arabic{chapter}.\arabic{section} }
 \renewcommand\thesubsection{
-    \arabic{chapter}.\arabic{section}.\arabic{subsection}}
+    \arabic{chapter}.\arabic{section}.\arabic{subsection} }
 \renewcommand\thesubsubsection{
-    \arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+    \arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection} }
 
 % 标题格式设置
 \titleformat{\chapter}
@@ -243,14 +261,14 @@ linkcolor=black
 % 设置全局图表格式
 
 % 图表按章节编号
-\numberwithin{table}{section} 
-\numberwithin{figure}{section}
-\numberwithin{equation}{section}
+\numberwithin{table}{chapter} 
+\numberwithin{figure}{chapter}
+\numberwithin{equation}{chapter}
 % \numberwithin{lstlisting}{section}  % 设置 listings 环境按章节编号
 % \newcounter{lstlisting}[section]
-\renewcommand{\thetable}{\arabic{section}.\arabic{table}}
-\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
-\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
 % \renewcommand{\thelstlisting}{\arabic{section}.\arabic{lstlisting}}
 
 % 设置图表标题样式
