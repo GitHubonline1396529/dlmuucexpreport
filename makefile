@@ -2,9 +2,23 @@
 
 # 变量设置
 TEXFILE = main.tex  # 主文件名
-BIBFILE = references.bib  # 参考文献文件名
+# BIBFILE = refs.bib  # 参考文献文件名
 PDFFILE = $(TEXFILE:.tex=.pdf)  # 最终生成的 PDF 文件名
-AUXFILES = *.aux *.bbl *.bcf *.blg *.out *.run.xml *.toc *.log *.run.xml # 通用的临时文件
+# 通用的临时文件
+AUXFILES = \
+*.aux \
+*.bbl \
+*.bcf \
+*.blg \
+*.fdb_latexmk \
+*.fls \
+*.log \
+*.loc \
+*.out \
+*.run.xml \
+*.soc \
+*.toc \
+*.xdv
 
 # 示例文件
 EXAMPLE_FILE = example.tex
