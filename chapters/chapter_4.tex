@@ -51,10 +51,10 @@ latexmk -c # 清理工作区
 
 \subsection{使用LaTexmk基于\XeLaTeX 构建文档}
 
-您也可以通过LaTexmk指定使用\XeLaTeX 规则编译文档，这只需要您在使用LaTexmk时指定\texttt{-xelatex}参数：
+您也可以通过LaTexmk指定使用\XeLaTeX 规则编译文档，这只需要您在使用LaTexmk时指定\texttt{-xelatex}参数。编译的命令如\ref{lst:shell_cmd}所示。
 
 \begin{lstlisting}[
     language=bash,
-    caption={用于编译文档的LaTexmk命令}\label{lst:shell_script}]
+    caption={用于编译文档的LaTexmk命令}\label{lst:shell_cmd}]
 latexmk -xelatex main.tex
 \end{lstlisting}
