@@ -1,10 +1,18 @@
-*.aux 
-*.bbl 
-*.bcf 
-*.blg 
-*.out 
-*.run.xml 
-*.toc
+# All auxiliary files of LaTeX
+*.aux \
+*.bbl \
+*.bcf \
+*.blg \
+*.fdb_latexmk \
+*.fls \
+*.log \
+*.loc \
+*.out \
+*.run.xml \
+*.soc \
+*.toc \
+*.xdv
 
+# The vscode workspace folder
 .vscode
 .vscode/*
