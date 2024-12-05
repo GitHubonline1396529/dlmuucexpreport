@@ -25,7 +25,7 @@
     numberwithinsect,
     AutoFakeBold=true, 
     openany
-    ]{book}
+    ]{report}
 
 % 编译器约束
 \RequirePackage{ifxetex}
@@ -60,6 +60,8 @@
 \RequirePackage{fontspec}
 \RequirePackage{float}
 \RequirePackage{ulem}
+\RequirePackage{abstract} % 用于设置摘要
+% 利用可选参数 runin ，将摘要标题添加到摘要正文段前
 
 % 与数学环境有关的包
 \RequirePackage{amsmath}
@@ -174,34 +176,34 @@ linkcolor=black
 
 % 定义中文序号
 \renewcommand\thechapter{
-    \chinese{chapter}、}
+    \chinese{chapter}}
 \renewcommand\thesection{
-    \arabic{chapter}.\arabic{section} }
+    \arabic{chapter}.\arabic{section}}
 \renewcommand\thesubsection{
-    \arabic{chapter}.\arabic{section}.\arabic{subsection} }
+    \arabic{chapter}.\arabic{section}.\arabic{subsection}}
 \renewcommand\thesubsubsection{
-    \arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection} }
+    \arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
 
 % 标题格式设置
 \titleformat{\chapter}
     {\bfseries\fontsize{14pt}{16pt}\selectfont}
-    {\thechapter}
+    {\thechapter、}
     {1em}
     {}
 \titleformat{\section}
     {\bfseries\fontsize{12pt}{14pt}\selectfont}
-    {\thesection}
+    {\thesection }
     {1em}
     {}
 \titleformat{\subsection}
     {\bfseries\fontsize{10.5pt}{12pt}\selectfont}
-    {\thesubsection}
+    {\thesubsection }
     {1em}
     {}
 \titleformat{\subsubsection}[runin]
 % 加上 [runin] 参数将 subsubsection 调整为常见的款项样式
     {\bfseries\fontsize{10.5pt}{12pt}\selectfont} %
-    {\thesubsubsection}
+    {\thesubsubsection }
     {1em}
     {}
     [\hspace*{1em}] % 在标题后插入 1em 的间距
@@ -212,6 +214,24 @@ linkcolor=black
 \titlespacing{\subsection}{0pt}{0.5\baselineskip}{0.5\baselineskip}
 \titlespacing{\subsubsection}{0pt}{0\baselineskip}{0\baselineskip}[1em]
 
+% 摘要格式设置
+%
+\renewcommand{\abstractname}{摘\ \ \ \ 要} % 设置摘要标题文本
+% \setlength{\abstitleskip}{-2em} % 取消摘要标题前的缩进
+% \abslabeldelim{:} % 在摘要标题后添加 符号“:”
+% 下面这两行是使用了 CTEX 宏包定义的楷书命令 \kaishus
+% 指定摘要使用楷书字体
+\renewcommand{\abstractnamefont}{
+    \bfseries\large\selectfont}
+\renewcommand{\abstracttextfont}{
+    \normalfont\normalsize\selectfont}
+
+% 调整摘要位置的间距
+% \setlength{\absleftindent}{1.18cm} % 控制摘要左缩进
+% \setlength{\absrightindent}{1.18cm} % 控制摘要右缩进
+% \setlength{\abstitleskip}{-1em} % 控制摘要标题与摘要正文的间距
+% \setlength{\absparindent}{2em} % 控制摘要段落的缩进
+% \setlength{\absbottomskip}{1em} % 控制摘要与正文的间距
 % 设置目录标题样式
 %
 % 目录标题：三号宋体，加粗，居中，段前20磅，段后10磅，无缩进，
@@ -430,6 +450,19 @@ linkcolor=black
 \newcommand\teacher[1]{\def\@teacher{#1}}
 
 \renewcommand{\date}[1]{\def\@date{#1}}
+
+% 设置元数据默认值
+% 这部分内容将会被用于构建文档的封面
+\college{大连海事大学}
+\title{实验报告}
+
+\course{某某专业实验课}
+\major{某某专业}
+\class{20XX-X班}
+\stuid{2220XXXXXX}
+\name{你的名字}
+\teacher{你的老师}
+\date{XXXX年XX月XX日}
 
 % 设置页眉和页脚
 \pagestyle{fancy}
