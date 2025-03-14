@@ -13,7 +13,8 @@
 % 
 % The Current Maintainer of this work is Githubonline1396529
 %
-% This work consists of the files dlmuucexprep.cls and logo.png
+% This work consists of the files cover.sty, dlmuucexprep.cls and
+% logo.png
 
 \ProvidesClass{dlmuucexprep}[
     2024/10/07 A Unoffical document class 
@@ -70,7 +71,8 @@
     colorlinks=true, 
     linkcolor=black, 
     citecolor=black, 
-    urlcolor=black]{hyperref} 
+    urlcolor=blue,
+    filecolor=black]{hyperref} 
 \RequirePackage{amsthm} 
 \RequirePackage{mathtools} 
 \RequirePackage{mathrsfs}
@@ -98,6 +100,12 @@
     hyperref=true,
     url=false
     ]{biblatex}  % 使用 biblatex 处理引用
+\RequirePackage{bookmark}
+\bookmarksetup{
+  % 在 PDF 书签中启用章节编号
+  numbered, 
+  open,
+}
 
 % 部分与学科高度相关的包
 \RequirePackage{braket} % 量子力学算符
@@ -143,9 +151,6 @@
     AutoFakeBold=2,
     ]{simsun.ttc}
 
-\setCJKfamilyfont{hwxk}[Path=fonts/]{STXingkai.ttf} 
-%使用STXingkai华文行楷字体
-\newcommand{\huawenxingkai}{\CJKfamily{hwxk}}
 \setCJKfamilyfont{gbkt}[
     Path=fonts/, AutoFakeBold=1]{kt_GB2312.ttf}
 \newcommand{\kaitigb}{\CJKfamily{gbkt}}
@@ -420,6 +425,7 @@ linkcolor=black
 
 \renewcommand{\lstlistingname}{代码}
 
+% ----------------------------------------------------------------------------
 % 定义命令 prefacedEqu 用来创建包含“解”或者“假定”字样的公式
 \newcommand{\prefacedEqu}[3][\baselineskip]{%
     \vspace{\abovedisplayskip}\qquad#2\vspace{-#1}% 调整垂直间距
@@ -431,111 +437,35 @@ linkcolor=black
 \newcommand{\conclusion}{
     \vspace{20pt} % 段前20磅
     \noindent % 无缩进
-    {\fontsize{14pt}{17.5pt}\selectfont\textbf{结论}} % 四号宋体，加粗，1.25倍行距
+    {\fontsize{14pt}{17.5pt}\selectfont\textbf{结论}}%
+    % 四号宋体，加粗，1.25倍行距
     \vspace{10pt} % 段后10磅
 }
 
-\makeatletter
-% 文档的信息
-% 用于在封面上展示
-\newcommand\college[1]{\def\@college{#1}}
-
-\renewcommand{\title}[1]{\def\@title{#1}}
-
-\newcommand\course[1]{\def\@course{#1}}
-\newcommand\major[1]{\def\@major{#1}}
-\newcommand\class[1]{\def\@class{#1}}
-\newcommand\stuid[1]{\def\@stuid{#1}}
-\newcommand\name[1]{\def\@name{#1}}
-\newcommand\teacher[1]{\def\@teacher{#1}}
-
-\renewcommand{\date}[1]{\def\@date{#1}}
-
-% 设置元数据默认值
-% 这部分内容将会被用于构建文档的封面
-\college{大连海事大学}
-\title{实验报告}
-
-\course{某某专业实验课}
-\major{某某专业}
-\class{20XX-X班}
-\stuid{2220XXXXXX}
-\name{你的名字}
-\teacher{你的老师}
-\date{XXXX年XX月XX日}
-
-% 设置页眉和页脚
-\pagestyle{fancy}
-\fancyhead{} % 仅清空页眉
-\renewcommand{\headrulewidth}{0pt} % 去掉页眉的横线
-
-% 出于封面样式的需要，将 ulem 的下划线设置为 1pt
-\renewcommand{\ULthickness}{1pt} % 设置下划线厚度为 1pt
-
-% 封面
-\renewcommand{\maketitle}{
-\begin{titlepage}
-\thispagestyle{empty}
-
-% 微调位置
-\vspace*{12pt}
-
-\begin{center}
-    {\fontsize{42pt}{42pt}\huawenxingkai \@college\\[0em]}
-
-    \vspace{1.2\baselineskip} % 微调行距
-
-    {\fontsize{26pt}{26pt}\heiti \@title\\[0em]}
-
-    \vspace{2.1\baselineskip} % 微调行距
-
-    \includegraphics[width=5.67cm]{logo.png} % 插入 logo.png
-\end{center}
-
-\vspace*{32pt} % 一号字空一行
-
-% 封面上的姓名课程等信息框
-\begin{table}[H]
-    \centering
-    \setlength{\tabcolsep}{0pt} % 设置列距为0
-    \setlength{\arrayrulewidth}{1pt} % 设置表格线条宽度
-    \renewcommand{\arraystretch}{2.15} % 设置行距
-    % \centering
-    \fontsize{20pt}{20pt}\kaitigb
-    \begin{tabular}{b{2.8875cm} b{9cm}<{\centering}}
-        % 这里有几个要点：
-        %     1. 使用 ulem 宏包的 `\uline` 命令可以很好地设置下划线
-        %     2. 使用 `\parbox` 设置强制居中
-        %     3. 使用 `\raisebox` 将字体与下划线之间的距离抬高一点
-        \textbf{\bfseries 课程名称} & 
-        \uline{\raisebox{0.5ex}{\parbox[c][\baselineskip][c]{9cm}%
-        {\centering\textbf{\bfseries \@course}}}} \\
-        \textbf{\bfseries 专\qquad 业} & 
-        \uline{\raisebox{0.5ex}{\parbox[c][\baselineskip][c]{9cm}%
-        {\centering\textbf{\bfseries \@major}}}} \\
-        \textbf{\bfseries 班\qquad 级} & 
-        \uline{\raisebox{0.5ex}{\parbox[c][\baselineskip][c]{9cm}%
-        {\centering\textbf{\bfseries \@class}}}} \\
-        \textbf{\bfseries 学\qquad 号} & 
-        \uline{\raisebox{0.5ex}{\parbox[c][\baselineskip][c]{9cm}%
-        {\centering\textbf{\bfseries \@stuid}}}} \\
-        \textbf{\bfseries 姓\qquad 名} & 
-        \uline{\raisebox{0.5ex}{\parbox[c][\baselineskip][c]{9cm}%
-        {\centering\textbf{\bfseries \@name}}}} \\
-        \textbf{\bfseries 指导教师} & 
-        \uline{\raisebox{0.5ex}{\parbox[c][\baselineskip][c]{9cm}%
-        {\centering\textbf{\bfseries \@teacher}}}} \\
-    \end{tabular}
-\end{table}
-
-\vspace{0pt} % 微调行距
-
-\begin{center}
-    {
-        \fontsize{22pt}{22pt}{\kaitigb\bfseries \@date\par}}
-\end{center}
-\newpage
-\end{titlepage}
+\newcommand{\keywords}[1]{
+  \vskip2ex\par\noindent{\heiti 关键词: } #1
 }
 
-\makeatother
+% ----------------------------------------------------------------------------
+% Cover of the report document.
+\RequirePackage{thecover}
+
+% ----------------------------------------------------------------------------
+% All kinds of theorem environment.
+\theoremstyle{plain}% default
+\newtheorem{theorem}{定理}[section] %
+\newtheorem{lemma}[theorem]{引理} %
+\newtheorem{proposition}[theorem]{命题} %
+\newtheorem*{corollary}{推论} %
+\theoremstyle{definition} %
+\newtheorem{definition}{定义}[section] %
+\newtheorem{conjecture}{猜想}[section] %
+\newtheorem{example}{例}[section] %
+\theoremstyle{remark} %
+\newtheorem*{remark}{\normalfont\bfseries 评论} %
+\newtheorem*{note}{\normalfont\bfseries 注} %
+\newtheorem{case}{\normalfont\bfseries 案例} %
+\renewcommand*{\proofname}{
+  \normalfont\bfseries 证明
+} %
+\setlength\parindent{2\ccwd}
