@@ -1,5 +1,5 @@
-%% dlmuucexprep.cls
-%% Copyright 2008 Githubonline1396529
+%% This file is `dlmuucexprep.cls'
+%% Copyright 2024 2025 Githubonline1396529
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3
