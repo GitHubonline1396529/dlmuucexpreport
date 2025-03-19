@@ -1,4 +1,4 @@
-# All auxiliary files of LaTeX
+# Common auxiliary files of LaTeX
 *.aux
 *.bbl
 *.bcf
@@ -12,7 +12,15 @@
 *.soc
 *.toc
 *.xdv
+*.synctex.gz
+*.synctex
 
-# The vscode workspace folder
+# This file will be automatically removed after latexmk. However, incase that
+# it was not removed for some reason, I still keep this line of git ignore 
+# rule here.
+*.synctex(busy)
+
+# The Visual Studio Code workspace folder (I just can't stop Visual Studio from
+# from creating it.)
 .vscode
 .vscode/*
