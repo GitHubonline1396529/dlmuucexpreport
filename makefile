@@ -11,6 +11,8 @@ AUXFILES = \
 *.bcf \
 *.blg \
 *.fdb_latexmk \
+*.synctex.gz \
+*.synctex \
 *.fls \
 *.log \
 *.loc \
@@ -27,29 +29,29 @@ EXAMPLE_AUX = $(basename $(EXAMPLE_FILE)).aux \
               $(basename $(EXAMPLE_FILE)).bbl \
               $(basename $(EXAMPLE_FILE)).bcf \
               $(basename $(EXAMPLE_FILE)).blg \
+              $(basename $(EXAMPLE_FILE)).fdb_latexmk \
+              $(basename $(EXAMPLE_FILE)).fls \
+              $(basename $(EXAMPLE_FILE)).log \
+			  $(basename $(EXAMPLE_FILE)).loc \
               $(basename $(EXAMPLE_FILE)).out \
               $(basename $(EXAMPLE_FILE)).run.xml \
+              $(basename $(EXAMPLE_FILE)).soc \
               $(basename $(EXAMPLE_FILE)).toc \
-			  $(basename $(EXAMPLE_FILE)).log
+              $(basename $(EXAMPLE_FILE)).synctex.gz \
+              $(basename $(EXAMPLE_FILE)).synctex \
+              $(basename $(EXAMPLE_FILE)).xdv
 
 # 默认目标
 all: $(PDFFILE)
 
 # 编译主文件
-$(PDFFILE): $(TEXFILE) $(BIBFILE)
-	xelatex $(TEXFILE)
-	biber $(basename $(TEXFILE))
-	xelatex $(TEXFILE)
-	xelatex $(TEXFILE)
-	latexmk -c
+$(PDFFILE): $(TEXFILE)
+	latexmk $(TEXFILE)
 
 # 编译示例文件
-example:
-	xelatex $(EXAMPLE_FILE)
-	biber $(basename $(EXAMPLE_FILE))
-	xelatex $(EXAMPLE_FILE)
-	xelatex $(EXAMPLE_FILE)
-	rm -rf $(EXAMPLE_AUX)
+example: $(EXAMPLE_FILE)
+	latexmk $(EXAMPLE_FILE)
+	latexmk -c
 
 # 清理所有临时文件和目标 PDF 文件
 clean:
@@ -57,7 +59,7 @@ clean:
 
 # 清理所有临时文件
 clear:
-	rm -rf $(AUXFILES)
+	latexmk -c
 
 # PHONY 目标，表示这些不是真实文件名
-.PHONY: all clean example clean_example clear
+.PHONY: clean clear
