@@ -49,19 +49,19 @@ xelatex main.tex
 latexmk -c # 清理工作区
 \end{lstlisting}
 
-\subsection{使用LaTexmk基于\XeLaTeX 构建文档}
+\subsection{使用\LaTeX{}mk基于\XeLaTeX 构建文档}
 
-您也可以通过LaTexmk指定使用\XeLaTeX 规则编译文档，这只需要您在使用LaTexmk时指定\texttt{-xelatex}参数。编译的命令如\ref{lst:shell_cmd}所示。
+您也可以通过\LaTeX{}mk指定使用\XeLaTeX 规则编译文档。由于新版本增加了\texttt{latexmkrc}配置文件，您在使用\LaTeX{}mk时无需额外指定\texttt{-xelatex}参数。编译的命令如\ref{lst:shell_cmd}所示。
 
 \begin{lstlisting}[
     language=bash,
     caption={用于编译文档的LaTexmk命令}\label{lst:shell_cmd}]
-latexmk -xelatex main.tex
+latexmk main.tex
 \end{lstlisting}
 
 \section{写作示例}
 
-\textbf{以下的写作示例来自\href{https://github.com/ElegantLaTeX/ElegantNote/blob/master/elegantnote-cn.tex}{ElegantNote}项目}：我们将通过三个步骤定义可测函数的积分。首先定义非负简单函数的积分。以下设 $E$ 是 $\mathcal{R}^n$ 中的可测集。
+\textbf{以下的写作示例来自\href{https://github.com/ElegantLaTeX/ElegantNote/blob/master/elegantnote-cn.tex}{ElegantNote}项目}，此处仅作展示使用：我们将通过三个步骤定义可测函数的积分。首先定义非负简单函数的积分。以下设 $E$ 是 $\mathcal{R}^n$ 中的可测集。
 
 \begin{definition}[可积性]
 设 $ f(x)=\sum\limits_{i=1}^{k} a_i \chi_{A_i}(x)$ 是 $E$ 上的非负简单函数，其中 $\{A_1,A_2,\ldots$, $A_k\}$ 是 $E$ 上的一个可测分割，$a_1,a_2,\ldots,a_k$ 是非负实数。定义 $f$ 在 $E$ 上的积分为 1. 3
